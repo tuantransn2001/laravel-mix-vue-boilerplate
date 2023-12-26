@@ -2,29 +2,23 @@
 
 namespace App\Providers;
 
-use App\Repositories\IEloquentRepository;
-use App\Repositories\UserRepository;
-use BaseRepository;
 use Illuminate\Support\ServiceProvider;
-use IUserRepository;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
     /**
-     * Register services. 
-     * 
-     * @return void  
+     * Register services.
      */
     public function register(): void
     {
-        $this->app->bind(IEloquentRepository::class, BaseRepository::class);
-        $this->app->bind(IUserRepository::class, UserRepository::class);
+        $this->app->bind(
+            'App\Repositories\IUserRepository',
+            'App\Repositories\Eloquent\UserRepository'
+        );
     }
 
     /**
-     * Bootstrap services. 
-     * 
-     * @return void  
+     * Bootstrap services.
      */
     public function boot(): void
     {

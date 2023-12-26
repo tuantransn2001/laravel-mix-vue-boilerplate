@@ -44,11 +44,20 @@ class BaseRepository implements IEloquentRepository
      * @param $id
      * @return Model
      */
-    public function findOne($id): ?Model
+    public function findUniq($id): ?Model
     {
-        return $this->model->find($id);
+        return $this->model->findUniq($id);
     }
 
+    /**
+     * @param $attributes
+     * @return Model
+     */
+    public function findOne($attributes): ?Model
+    {
+        return $this->model::where($attributes)->get()
+            ->first();
+    }
 
     /**
      * @param $id

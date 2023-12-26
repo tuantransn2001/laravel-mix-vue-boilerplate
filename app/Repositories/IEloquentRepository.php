@@ -29,7 +29,13 @@ interface IEloquentRepository
      * @param $id
      * @return Model
      **/
-    public function findOne($id): ?Model;
+    public function findUniq($id): ?Model;
+
+    /**
+     * @param $attributes
+     * @return Model
+     **/
+    public function findOne($attributes): ?Model;
 
     /**
      * @param $id
